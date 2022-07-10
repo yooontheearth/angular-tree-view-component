@@ -7,3 +7,9 @@ main > div:last-child > *{
     min-height:30vh;
     padding:3px;
 }
+#selected-directories-container > div:first-child{
+    font-weight: 600;
+    border-bottom:1px solid lightgray;
+    padding:0 0 6px 0;
+    margin:0 0 6px 0;
+}
