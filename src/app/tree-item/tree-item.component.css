@@ -19,12 +19,12 @@
     cursor:default;
     font-size:1.1em;
 }
-.directory > .name > span.selected{
+.directory.selected{
     background:rgb(164, 207, 221);
 }
-.directory > .name > span:hover{
+.directory:hover{
     background:hsl(194deg 55% 81%);
 }
-.directory > .name > span.hovering{
+.directory.hovering{
     background:hsl(194deg 55% 81%);
 }

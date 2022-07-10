@@ -16,6 +16,7 @@ export class TreeItemComponent extends DestroyableComponent implements OnInit, O
   @Input() item!:TreeDirectory;
   isClose = false;
   isSelected = false;
+  isHovering = false;
 
   ngOnInit(): void {
     console.log(`tree-item created`);
@@ -73,12 +74,13 @@ export class TreeItemComponent extends DestroyableComponent implements OnInit, O
     if(elem)
       event.dataTransfer?.setDragImage(elem, -20, -20);
   }
-  
+
+  // MEMO : a child element also fires a drag enter and a drag leave events, so it has to count how many times entering and leaving happening to manage a hovering state
+  private draggingCounter = 0;
+
   onDragEnter(event:DragEvent ) {    
-    const target = event.target as HTMLDivElement;
-    if(target){
-      target.classList.add('hovering');   // TODO : a class name should be more specific for this component since it's in a global scope
-    }
+    this.draggingCounter++;
+    this.isHovering = true;
     event.preventDefault();
   }
 
@@ -87,9 +89,9 @@ export class TreeItemComponent extends DestroyableComponent implements OnInit, O
   }
 
   onDragLeave(event:DragEvent ) {
-    const target = event.target as HTMLDivElement;
-    if(target){
-      target.classList.remove('hovering');
+    this.draggingCounter--;
+    if(this.draggingCounter === 0){
+      this.isHovering = false;
     }
   }
 
@@ -124,9 +126,7 @@ export class TreeItemComponent extends DestroyableComponent implements OnInit, O
   }
 
   private endDragging(){
-    let hoverings = document.getElementsByClassName('hovering');
-    while (hoverings.length > 0) {
-      hoverings[0].classList.remove('hovering');
-    }
+    this.draggingCounter = 0;
+    this.isHovering = false;
   }
 }
