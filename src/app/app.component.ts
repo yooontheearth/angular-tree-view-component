@@ -24,6 +24,7 @@ export class AppComponent {
   ];
 
   directoryData$ = new BehaviorSubject<Directory[]>(this.directories);
+  selectedDirectories:Directory[] = [];
 
   generateDirectories():void{
     const max = 10;
@@ -36,6 +37,7 @@ export class AppComponent {
     this.directoryData$.next(this.directories);
   }
 
-  onSelectionChange(directories:Directory[]){
+  onChangeSelections(selectedDirectories:Directory[]){
+    this.selectedDirectories = selectedDirectories;
   }
 }

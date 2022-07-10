@@ -3,9 +3,15 @@
     <button (click)="generateDirectories()">Randomly Generate Directories</button>
   </div>
   <div>
-    <app-tree-list [treeData]="directoryData$ | async"></app-tree-list>
-    <div>
-      TODO : Selected directories show up here
+    <app-tree-list (changeSelections)="onChangeSelections($event)" [treeData]="directoryData$ | async"></app-tree-list>
+    <div id="selected-directories-container">
+        <div>Selected Directories:</div>
+        <div>
+          <div *ngIf="selectedDirectories.length === 0">None...</div>
+          <div *ngFor="let directory of selectedDirectories">
+            {{ directory.name }}
+          </div>
+        </div>
     </div>
   </div>
 </main>

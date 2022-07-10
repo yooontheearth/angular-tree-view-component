@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { TreeDataService } from '../tree-data.service';
 import { Directory, TreeDirectory } from '../directory';
 import { DestroyableComponent } from '../destroyable.component';
@@ -17,6 +17,8 @@ export class TreeListComponent extends DestroyableComponent implements OnInit, O
   @Input() treeData!:Directory[] | null;
   rootDirectories:TreeDirectory[] = [];
 
+  @Output() changeSelections: EventEmitter<Directory[]> = new EventEmitter();
+
   ngOnInit(): void {
     console.log(`tree-list created`);
 
@@ -25,6 +27,12 @@ export class TreeListComponent extends DestroyableComponent implements OnInit, O
         .subscribe(rootDirectories => {
           console.log('tree-list root gets updated');
           this.rootDirectories = rootDirectories;
+        });
+
+    this.treeDataService.selections$
+        .pipe((d) => this.unsubscribeOnDestroy(d))
+        .subscribe(selections => {
+          this.changeSelections.emit(selections);
         });
   }
 
@@ -37,6 +45,4 @@ export class TreeListComponent extends DestroyableComponent implements OnInit, O
       this.treeDataService.setData(this.treeData); 
     }
   } 
-
-  // TODO : fire up a selection change event
 }
