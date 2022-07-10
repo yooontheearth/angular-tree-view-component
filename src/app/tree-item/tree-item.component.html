@@ -1,5 +1,6 @@
-<div class="container">
+<div>
     <div class="directory"
+        [style.padding-left.px]="depth * 24"
         [class.selected]="isSelected"
         [class.hovering]="isHovering"
         draggable="true"
@@ -21,7 +22,7 @@
     <div class="children">
         <ng-container *ngIf="!isClose">
           <ng-container *ngFor="let child of item.children; let i = index">
-            <app-tree-item  [item]="child"></app-tree-item>
+            <app-tree-item  [item]="child" [depth]="depth + 1"></app-tree-item>
           </ng-container>     
         </ng-container>
     </div>

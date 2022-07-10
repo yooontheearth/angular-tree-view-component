@@ -1,12 +1,7 @@
-.container{
-    margin:3px 0;
-}
-.container > .children{
-    margin-left:24px;
-}
 .directory{
     display: flex;
     align-items: flex-start;
+    padding:3px 0;
 }
 .directory > .toggle-visibility > span{
     display: block;

@@ -5,7 +5,7 @@ main > div:last-child > *{
     width:49vw;
     border:1px solid lightgray;
     min-height:30vh;
-    padding:3px;
+    padding:6px;
 }
 #selected-directories-container > div:first-child{
     font-weight: 600;

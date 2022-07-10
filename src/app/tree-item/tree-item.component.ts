@@ -14,6 +14,7 @@ export class TreeItemComponent extends DestroyableComponent implements OnInit, O
    }
 
   @Input() item!:TreeDirectory;
+  @Input() depth:number = 0;
   isClose = false;
   isSelected = false;
   isHovering = false;
