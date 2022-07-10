@@ -52,7 +52,6 @@ export class TreeItemComponent extends DestroyableComponent implements OnInit, O
 
   // Drag & Drop events
   onDragStart(event:DragEvent ) { 
-    //console.log(`drag starting`);
     if(event.dataTransfer){
       event.dataTransfer.effectAllowed = "move";
 
@@ -104,7 +103,6 @@ export class TreeItemComponent extends DestroyableComponent implements OnInit, O
   }
   
   onDrop(event:DragEvent ) {
-    //console.log('drop');
     this.endDragging();    
 
     const data = event.dataTransfer?.getData("application/json");
@@ -130,15 +128,5 @@ export class TreeItemComponent extends DestroyableComponent implements OnInit, O
     while (hoverings.length > 0) {
       hoverings[0].classList.remove('hovering');
     }
-  }
-
-  // Insert or Append
-  onDropInsertOrAppend(event:DragEvent) {
-    // TODO : insert or append 
-    const dataIndex = (event.target as HTMLDivElement).dataset['index'];
-    const index = dataIndex ? parseInt(dataIndex)+1 : 0;
-    alert(`Move to index:${index} place! ... Someday!!`);
-
-    this.endDragging();
   }
 }

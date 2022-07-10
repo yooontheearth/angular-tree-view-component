@@ -25,11 +25,6 @@
 .directory > .name > span:hover{
     background:hsl(194deg 55% 81%);
 }
-
-.droppable-area{
-    height:3px;
-}
-.directory > .name > span.hovering,
-.droppable-area.hovering{
+.directory > .name > span.hovering{
     background:hsl(194deg 55% 81%);
 }
