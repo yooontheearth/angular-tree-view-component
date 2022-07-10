@@ -1,0 +1,35 @@
+.container{
+    margin:3px 0;
+}
+.container > .children{
+    margin-left:24px;
+}
+.directory{
+    display: flex;
+    align-items: flex-start;
+}
+.directory > .toggle-visibility > span{
+    display: block;
+    width:25px;
+    height:25px;
+    cursor:default;
+}
+.directory > .name > span{
+    padding:3px 6px;
+    cursor:default;
+    font-size:1.1em;
+}
+.directory > .name > span.selected{
+    background:rgb(164, 207, 221);
+}
+.directory > .name > span:hover{
+    background:hsl(194deg 55% 81%);
+}
+
+.droppable-area{
+    height:3px;
+}
+.directory > .name > span.hovering,
+.droppable-area.hovering{
+    background:hsl(194deg 55% 81%);
+}

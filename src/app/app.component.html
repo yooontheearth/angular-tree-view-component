@@ -1,0 +1,11 @@
+<main>
+  <div>
+    <button (click)="generateDirectories()">Randomly Generate Directories</button>
+  </div>
+  <div>
+    <app-tree-list [treeData]="directoryData$ | async"></app-tree-list>
+    <div>
+      TODO : Selected directories show up here
+    </div>
+  </div>
+</main>

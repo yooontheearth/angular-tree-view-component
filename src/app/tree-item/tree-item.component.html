@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="directory"
+        [id]="getElementId()">
+        <div class="toggle-visibility">
+            <span class="material-symbols-outlined" *ngIf="isClose" (click)="toggleVisibility()">folder</span>
+            <span class="material-symbols-outlined" *ngIf="!isClose" (click)="toggleVisibility()">folder_open</span>
+        </div>
+        <div class="name">
+            <span 
+                (click)="onSelect($event)"
+                [class.selected]="isSelected"
+                draggable="true"
+                (dragstart)="onDragStart($event)"
+                (dragenter)="onDragEnter($event)" 
+                (dragover)="onDragOver($event)" 
+                (dragleave)="onDragLeave($event)"
+                (drop)="onDrop($event)"
+                (dragend)="onDragEnd($event)">{{item.name}}</span>
+        </div>    
+    </div>
+    <div class="children">
+        <div class="droppable-area"
+                [attr.data-index]="-1"
+                (dragenter)="onDragEnter($event)" 
+                (dragover)="onDragOver($event)" 
+                (dragleave)="onDragLeave($event)"
+                (drop)="onDropInsertOrAppend($event)"
+            ></div>
+        <ng-container *ngIf="!isClose">
+          <ng-container *ngFor="let child of item.children; let i = index">
+            <app-tree-item  [item]="child"></app-tree-item>
+            <div class="droppable-area"
+                [attr.data-index]="i"
+                (dragenter)="onDragEnter($event)" 
+                (dragover)="onDragOver($event)" 
+                (dragleave)="onDragLeave($event)"
+                (drop)="onDropInsertOrAppend($event)"
+            ></div>
+          </ng-container>     
+        </ng-container>
+    </div>
+</div>

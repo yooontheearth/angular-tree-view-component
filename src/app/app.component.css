@@ -1,0 +1,9 @@
+main > div:last-child{
+    display: flex;
+}
+main > div:last-child > *{
+    width:49vw;
+    border:1px solid lightgray;
+    min-height:30vh;
+    padding:3px;
+}
