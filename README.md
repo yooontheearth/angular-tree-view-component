@@ -1,4 +1,12 @@
-# TreeApp
+# Angular tree view component sample
+
+![image](https://user-images.githubusercontent.com/2125182/178134355-49c29fc8-3dba-4150-8dea-8285d6f200e6.png)
+
+This is a sample app for a tree view component in Angular. What you can do with this component is the following.
+
+- Select multiple directories with a mouse click with a control key
+- Drag & drop directories
+- Open and close a directory
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.0.
 
