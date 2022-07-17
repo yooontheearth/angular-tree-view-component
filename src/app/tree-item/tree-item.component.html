@@ -3,6 +3,7 @@
         [style.padding-left.px]="depth * 24"
         [class.selected]="isSelected"
         [class.hovering]="isHovering"
+        (click)="onSelect($event)"
         draggable="true"
         (dragstart)="onDragStart($event)"
         (dragenter)="onDragEnter($event)" 
@@ -12,8 +13,8 @@
         (dragend)="onDragEnd($event)"
         [id]="getElementId()">
         <div class="toggle-visibility">
-            <span class="material-symbols-outlined" *ngIf="isClose" (click)="toggleVisibility()">folder</span>
-            <span class="material-symbols-outlined" *ngIf="!isClose" (click)="toggleVisibility()">folder_open</span>
+            <span class="material-symbols-outlined" *ngIf="isClose" (click)="toggleVisibility($event)">folder</span>
+            <span class="material-symbols-outlined" *ngIf="!isClose" (click)="toggleVisibility($event)">folder_open</span>
         </div>
         <div class="name">
             <span (click)="onSelect($event)">{{item.name}}</span>

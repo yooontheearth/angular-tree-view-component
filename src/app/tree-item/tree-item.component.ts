@@ -38,8 +38,9 @@ export class TreeItemComponent extends DestroyableComponent implements OnInit, O
     return `tree-item-${this.item.id}`;
   }
 
-  toggleVisibility():void{
+  toggleVisibility(event:Event):void{
     this.isClose = !this.isClose;
+    event.stopPropagation();
   }
 
   onSelect(event:MouseEvent):void{
