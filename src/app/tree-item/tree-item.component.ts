@@ -45,6 +45,7 @@ export class TreeItemComponent extends DestroyableComponent implements OnInit, O
 
   onSelect(event:MouseEvent):void{
     this.treeDataService.setSelection(this.item, event.ctrlKey);
+    event.stopPropagation();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
